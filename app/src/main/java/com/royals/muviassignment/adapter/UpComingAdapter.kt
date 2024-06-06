@@ -8,14 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.royals.muviassignment.R
+import com.royals.muviassignment.listener.OnItemClickListener
 import com.royals.muviassignment.model.Result
 
 class UpcomingAdapter(private val nowPlayingList: List<Result>, private val listener: OnItemClickListener) : RecyclerView.Adapter<UpcomingAdapter.UpComingViewHolder>() {
 
-    interface OnItemClickListener {
+  /*  interface OnItemClickListener {
         fun onItemClick(result: Result)
     }
-
+*/
     class UpComingViewHolder(view: View, private val listener: OnItemClickListener) : RecyclerView.ViewHolder(view), View.OnClickListener {
         private val title = view.findViewById<TextView>(R.id.movie_title)
         private val poster = view.findViewById<ImageView>(R.id.movie_poster)
@@ -34,7 +35,7 @@ class UpcomingAdapter(private val nowPlayingList: List<Result>, private val list
         }
 
         override fun onClick(v: View?) {
-            listener.onItemClick(result)
+            listener.onUpcomingItemClick(result)
         }
     }
 

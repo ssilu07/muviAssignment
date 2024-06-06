@@ -25,7 +25,7 @@ import com.royals.muviassignment.viewmodel.MovieViewModel
 import com.royals.muviassignment.viewmodel.TvShowsViewModel
 import com.royals.muviassignment.viewmodel.UpComingViewModel
 
-class HomeFragment : Fragment(R.layout.fragment_home),OnItemClickListener,UpcomingAdapter.OnItemClickListener {
+class HomeFragment : Fragment(R.layout.fragment_home),OnItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerViewUpComing: RecyclerView
@@ -84,13 +84,21 @@ class HomeFragment : Fragment(R.layout.fragment_home),OnItemClickListener,Upcomi
                     startActivity(intent)
 
                 }
+
+                override fun onUpcomingItemClick(result: Result) {
+                    TODO("Not yet implemented")
+                }
             })
         }
 
         upComingViewModel = ViewModelProvider(this)[UpComingViewModel::class.java]
         upComingViewModel.movies.observe(viewLifecycleOwner) { result ->
-            recyclerViewUpComing.adapter = UpcomingAdapter(result, object : UpcomingAdapter.OnItemClickListener {
-                    override fun onItemClick(result: Result) {
+            recyclerViewUpComing.adapter = UpcomingAdapter(result, object : OnItemClickListener {
+                override fun onItemClick(movie: Movie) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onUpcomingItemClick(result: Result) {
                         val bundle = Bundle()
                         bundle.putParcelable("result", result)
                         val intent = Intent(requireContext(), MovieDescriptionActivity::class.java)
@@ -113,11 +121,9 @@ class HomeFragment : Fragment(R.layout.fragment_home),OnItemClickListener,Upcomi
 
     }
     override fun onItemClick(movie: Movie) {
-        // handle item click here
     }
 
-    override fun onItemClick(result: Result) {
-        // handle item click here
+    override fun onUpcomingItemClick(result: Result) {
     }
 }
 

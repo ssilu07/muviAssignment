@@ -5,5 +5,5 @@ import com.royals.muviassignment.model.Result
 
 interface OnItemClickListener {
     fun onItemClick(movie: Movie)
-
+    fun onUpcomingItemClick(result: Result)
 }
